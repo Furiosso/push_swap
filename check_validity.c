@@ -2,15 +2,13 @@
 #include <stdio.h>
 
 static void	check_integers(char **str);
-int	ft_atol(char *str);
 static void	check_duplicity(t_stack *stack_a);
-static void	return_exit(int code);
+void	return_exit(char code);
 
 t_stack	*check_validity(int len, const char **argv)
 {
 	char	**str;
 	t_stack	*stack_a;
-	int	cont;
 
 	if (len == 2)
 		str = ft_split(argv[1], ' ');
@@ -18,13 +16,9 @@ t_stack	*check_validity(int len, const char **argv)
 		str = create_str(len, argv);
 	if (!str)
 		return (NULL);
-	cont = 0;
-	while (str[cont])
-		printf(" %s -", str[cont++]);
-       	printf("\n");	
 	check_integers(str);
 	stack_a = create_list(str);
-	clean_str(len, str);
+	clean_str(str);
 	if (!stack_a)
 		return (NULL);
 	check_duplicity(stack_a);
@@ -39,6 +33,8 @@ static void	check_integers(char **str)
 	i = 0;
 	while (str[i])
 	{
+		if (!ft_strlen(str[i]))
+			return_exit(4);
 		j = 0;
 		while (str[i][j])
 		{
@@ -56,35 +52,6 @@ static void	check_integers(char **str)
 		}
 		i++;
 	}
-}
-
-int	ft_atol(char *str)
-{
-	long	num;
-	int	result;
-	char	odd;
-
-	num = 0;
-	odd = 0;
-	while (*str == 32 || (*str > 8 && *str < 14))
-		str++;
-	if (*str == 45 || *str == 43)
-	{
-		if (*str == 45)
-			odd = 1;
-		str++;
-	}
-	while (*str > 47 && *str < 58)
-	{
-		num = num * 10 + *str - 48;
-		str++;
-	}
-	if (odd)
-		num = -num;
-	if (num > INT_MAX || num < INT_MIN)
-		return_exit(2);
-	result = num;
-	return (result);
 }
 
 static void	check_duplicity(t_stack *stack_a)
@@ -116,7 +83,7 @@ static void	check_duplicity(t_stack *stack_a)
 	}
 }
 
-static void	return_exit(int code)
+void	return_exit(char code)
 {
 	write(1, "Error\n", 6);
 	exit(code);

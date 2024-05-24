@@ -1,7 +1,7 @@
 #include "push_swap.h"
-#include <stdio.h>
 
-char	**clean_str(int len, char **str);
+static int	ft_atol(char *str);
+char	**clean_str(char **str);
 void	clean(t_stack *list);
 
 char	**create_str(int len, const char **argv)
@@ -17,13 +17,9 @@ char	**create_str(int len, const char **argv)
 	{
 		str[i - 1] = ft_strdup(argv[i]);
 		if (!str[i - 1])
-			return (clean_str(i - 1, str));
+			return (clean_str(str));
 		i++;
 	}
-	i = 0;
-	while (str[i])
-		printf("%s | ", str[i++]);
-	printf("\n");
 	return (str);
 }
 
@@ -33,30 +29,61 @@ t_stack	*create_list(char **str)
 	t_stack *aux;
 	int	cont;
 
-	stack_a = new_node(ft_atol(str[0]));
+	stack_a = ft_calloc(1, sizeof(t_stack));
 	if (!stack_a)
 		return (NULL);
+	stack_a->number = ft_atol(str[0]);
 	aux = stack_a;
 	cont = 1;
 	while (str[cont])
 	{
-		aux->next = new_node(ft_atol(str[cont++]));
+		aux->next = ft_calloc(1, sizeof(t_stack));
 		if (!aux->next)
 		{
 			clean(stack_a);
 			return (NULL);
 		}
 		aux = aux->next;
+		aux->number = ft_atol(str[cont++]);
 	}
 	return (stack_a);
 }
 
-char	**clean_str(int len, char **str)
+static int	ft_atol(char *str)
+{
+	long	num;
+	int	result;
+	char	odd;
+
+	num = 0;
+	odd = 0;
+	while (*str == 32 || (*str > 8 && *str < 14))
+		str++;
+	if (*str == 45 || *str == 43)
+	{
+		if (*str == 45)
+			odd = 1;
+		str++;
+	}
+	while (*str > 47 && *str < 58)
+	{
+		num = num * 10 + *str - 48;
+		str++;
+	}
+	if (odd)
+		num = -num;
+	if (num > INT_MAX || num < INT_MIN)
+		return_exit(2);
+	result = num;
+	return (result);
+}
+
+char	**clean_str(char **str)
 {
 	int	i;
 	
 	i = 0;
-	while (i < len)
+	while (str[i])
 		free(str[i++]);
 	free(str);
 	return (NULL);
