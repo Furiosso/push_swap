@@ -12,6 +12,7 @@ typedef	struct	s_int
 }		t_stack;
 
 t_stack	*check_validity(int len, const char **argv);
+void	sort_stack(t_stack *stack_a);
 char	**create_str(int len, const char **argv);
 t_stack	*create_list(char **str);
 char	**clean_str(char **str);

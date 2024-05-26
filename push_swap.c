@@ -9,5 +9,6 @@ int	main(int len, const char **argv)
 	stack_a = check_validity(len, argv);
 	if (!stack_a)
 		return (0);
+	sort_stack(stack_a);
 	clean(stack_a);
 }
