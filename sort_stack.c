@@ -3,6 +3,7 @@
 
 void	sort_stack(t_stack **stack_a);
 char	check_order(t_stack *stack);
+//void	radix_sort(stack_a, &stack_b);
 void	bubble_sort(t_stack **stack_a, t_stack **stack_b);
 void	custom_sort(t_stack **stack_a, t_stack **stack_b);
 size_t	list_size(t_stack *stack);
@@ -24,6 +25,7 @@ void	sort_stack(t_stack **stack_a)
 	}
 	printf("\n");*/
 	custom_sort(stack_a, &stack_b);
+	//radix_sort(stack_a, &stack_b);
 	//bubble_sort(stack_a, &stack_b);
 	//swap("sa", stack_a);
 	//push_stack("pb", &stack_b, stack_a);
@@ -36,14 +38,19 @@ void	sort_stack(t_stack **stack_a)
 	//push_stack("pa", stack_a, &stack_b);
 	//push_stack("pa", stack_a, &stack_b);
 }
+/*
+void	radix_sort(stack_a, &stack_b)
+{
+
+}*/
 
 void	custom_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	min;
 	t_stack	*aux;
-	size_t	len;
+	size_t	len;	
 
-	while (list_size(*stack_a) > 2)
+	while (!check_order(*stack_a) && list_size(*stack_a) > 2)
 	{
 		min = (*stack_a)->number;
 		aux = (*stack_a)->next;
@@ -62,12 +69,22 @@ void	custom_sort(t_stack **stack_a, t_stack **stack_b)
 		}
 		while ((*stack_a)->number != min)
 		{
-			if (len < list_size(*stack_a) / 2)
+			if (len <= list_size(*stack_a) / 2)
 	       			rotate("ra", stack_a);
 			else
 				reverse_rotate("rra", stack_a);
 		}
+		if (check_order(*stack_a) && !*stack_b)
+			return ;
 		push_stack("pb", stack_b, stack_a);
+		/*aux = *stack_a;
+		printf("Stack a: ");
+		while (aux)
+		{
+			printf(" %d |", aux->number);
+			aux = aux->next;
+		}
+		printf("\n");*/
 	}
 	if ((*stack_a)->number > (*stack_a)->next->number)
 		swap("sa", stack_a);
