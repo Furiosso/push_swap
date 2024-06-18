@@ -8,6 +8,7 @@
 typedef	struct	s_int
 {
 	int	number;
+	size_t	position;
 	struct s_int	*next;
 }		t_stack;
 
