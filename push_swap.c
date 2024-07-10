@@ -12,12 +12,12 @@ int	main(int len, const char **argv)
 	if (!stack_a)
 		return (0);
 	sort_stack(&stack_a);
-	/*aux = stack_a;
-	while (aux)
+	/*size_t size = list_size(stack_a);
+	aux = stack_a;
+	while (size--)
 	{
-		printf(" %d |", aux->number);
+		printf(" %d: %d\n", aux->position, aux->number);
 		aux = aux->next;
-	}
-	printf("\n");*/
+	}*/
 	clean(stack_a);
 }

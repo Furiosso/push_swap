@@ -2,13 +2,15 @@
 #include <stdio.h>
 
 static void	check_integers(char **str);
+static void	stablish_position(t_stack *stack);
 static void	check_duplicity(t_stack *stack_a);
-void	return_exit(char code);
+void		return_exit(char code);
 
 t_stack	*check_validity(int len, const char **argv)
 {
 	char	**str;
 	t_stack	*stack_a;
+	t_stack	*last;
 
 	if (len == 2)
 		str = ft_split(argv[1], ' ');
@@ -18,10 +20,13 @@ t_stack	*check_validity(int len, const char **argv)
 		return (NULL);
 	check_integers(str);
 	stack_a = create_list(str);
-	clean_str(str);
 	if (!stack_a)
 		return (NULL);
 	check_duplicity(stack_a);
+	stablish_position(stack_a);
+	last = last_node(stack_a);
+	last->next = stack_a;
+	stack_a->prev = last;
 	return (stack_a);
 }
 
@@ -41,7 +46,7 @@ static void	check_integers(char **str)
 			if (str[i][j] < 48 || str[i][j] > 57)
 			{
 				if ((j == 0 && str[i][j] == 45)
-						|| (j == 0 && str[i][j] == 43))
+					|| (j == 0 && str[i][j] == 43))
 				{
 					j++;
 					continue ;
@@ -85,6 +90,34 @@ static void	check_duplicity(t_stack *stack_a)
 
 void	return_exit(char code)
 {
+	//ft_printf("Error\n");
 	write(1, "Error\n", 6);
 	exit(code);
+}
+
+static void	stablish_position(t_stack *stack)
+{
+        int	pos;
+        t_stack	*aux1;
+        t_stack	*aux2;
+
+        aux1 = stack;
+        while (aux1)
+        {
+                pos = 1;
+                aux2 = stack;
+                while (aux2)
+                {
+                        if (aux1->number == aux2->number)
+                        {
+                                aux2 = aux2->next;
+                                continue ;
+                        }
+                        if (aux2->number < aux1->number)
+                                pos++;
+                        aux2 = aux2->next;
+                }
+                aux1->position = pos;
+                aux1 = aux1->next;
+        }
 }

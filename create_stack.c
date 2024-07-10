@@ -1,7 +1,8 @@
 #include "push_swap.h"
+#include <stdio.h>
 
 static int	ft_atol(char *str);
-char	**clean_str(char **str);
+static char	**clean_str(char **str);
 void	clean(t_stack *list);
 
 char	**create_str(int len, const char **argv)
@@ -43,9 +44,11 @@ t_stack	*create_list(char **str)
 			clean(stack_a);
 			return (NULL);
 		}
+		aux->next->prev = aux;
 		aux = aux->next;
 		aux->number = ft_atol(str[cont++]);
 	}
+	clean_str(str);
 	return (stack_a);
 }
 
@@ -78,7 +81,7 @@ static int	ft_atol(char *str)
 	return (result);
 }
 
-char	**clean_str(char **str)
+static char	**clean_str(char **str)
 {
 	int	i;
 	
@@ -93,6 +96,7 @@ void	clean(t_stack *list)
 {
 	t_stack	*aux;
 
+	list->prev->next = NULL;	
 	while (list)
 	{
 		aux = list->next;
