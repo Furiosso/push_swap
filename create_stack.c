@@ -1,9 +1,8 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	ft_atol(char *str);
 static char	**clean_str(char **str);
-void	clean(t_stack *list);
+void		clean(t_stack *list);
 
 char	**create_str(int len, const char **argv)
 {

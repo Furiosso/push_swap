@@ -4,7 +4,6 @@
 
 # include <limits.h>
 # include "Libft/libft.h"
-# include <stdio.h>
 
 typedef	struct	s_int
 {
@@ -49,6 +48,6 @@ void	swap(char *str, t_stack **stack);
 void	ss(t_stack **stack_a, t_stack **stack_b);
 void	sort_3(t_stack **stack);
 void	sort_3_backwards(t_stack **stack);
-void	sort_5(t_stack **stack_a, t_stack **stack_b);
+void	sort_5(t_stack **stack_a, t_stack **stack_b, int size);
 
 #endif

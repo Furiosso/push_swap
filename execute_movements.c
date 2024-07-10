@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-void	move_up(t_stack **stack_a, t_stack **stack_b, t_params *params);
-void	move_down(t_stack **stack_a, t_stack **stack_b, t_params *params);
-void	move_aup_bdown(t_stack **stack_a, t_stack **stack_b, t_params *params);
-void	move_bup_adown(t_stack **stack_a, t_stack **stack_b, t_params *params);
+static void	move_up(t_stack **stack_a, t_stack **stack_b, t_params *params);
+static void	move_down(t_stack **stack_a, t_stack **stack_b, t_params *params);
+static void	move_aup_bdown(t_stack **stack_a, t_stack **stack_b, t_params *params);
+static void	move_bup_adown(t_stack **stack_a, t_stack **stack_b, t_params *params);
 
 void	execute_movements(t_stack **stack_a, t_stack **stack_b, t_params *params)
 {
@@ -18,7 +18,7 @@ void	execute_movements(t_stack **stack_a, t_stack **stack_b, t_params *params)
 	push_stack("pb", stack_b, stack_a);
 }
 
-void	move_up(t_stack **stack_a, t_stack **stack_b, t_params *params)
+static void	move_up(t_stack **stack_a, t_stack **stack_b, t_params *params)
 {
 	while ((*stack_a)->position != params->pos || (*stack_b)->position != params->target)
 	{
@@ -31,7 +31,7 @@ void	move_up(t_stack **stack_a, t_stack **stack_b, t_params *params)
 	}
 }
 
-void	move_down(t_stack **stack_a, t_stack **stack_b, t_params *params)
+static void	move_down(t_stack **stack_a, t_stack **stack_b, t_params *params)
 {
 	while ((*stack_a)->position != params->pos || (*stack_b)->position != params->target)
 	{
@@ -44,7 +44,7 @@ void	move_down(t_stack **stack_a, t_stack **stack_b, t_params *params)
 	}
 }
 
-void	move_aup_bdown(t_stack **stack_a, t_stack **stack_b, t_params *params)
+static void	move_aup_bdown(t_stack **stack_a, t_stack **stack_b, t_params *params)
 {
 	while ((*stack_a)->position != params->pos || (*stack_b)->position != params->target)
 	{
@@ -55,7 +55,7 @@ void	move_aup_bdown(t_stack **stack_a, t_stack **stack_b, t_params *params)
 	}
 }
 
-void	move_bup_adown(t_stack **stack_a, t_stack **stack_b, t_params *params)
+static void	move_bup_adown(t_stack **stack_a, t_stack **stack_b, t_params *params)
 {
 	while ((*stack_a)->position != params->pos || (*stack_b)->position != params->target)
 	{

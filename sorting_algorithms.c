@@ -1,7 +1,6 @@
 #include "push_swap.h"
-#include <stdio.h>
 
-char	look_down(t_stack *stack, int needle);
+static char	look_down(t_stack *stack, int needle);
 
 void	sort_3(t_stack **stack)
 {
@@ -49,12 +48,12 @@ void	sort_3_backwards(t_stack **stack)
 		swap("sb", stack);
 }
 
-void	sort_5(t_stack **stack_a, t_stack **stack_b)
+void	sort_5(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int	min;
 
 	min = 1;
-	while (list_size(*stack_a) > 3)
+	while (size-- > 3)
 	{
 		if (look_down(*stack_a, min))
 		{
@@ -74,7 +73,7 @@ void	sort_5(t_stack **stack_a, t_stack **stack_b)
 		push_stack("pa", stack_a, stack_b);
 }
 
-char	look_down(t_stack *stack, int needle)
+static char	look_down(t_stack *stack, int needle)
 {
 	t_stack	*aux;
 	int	len1;

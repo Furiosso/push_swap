@@ -12,26 +12,6 @@ void	reverse_rotate(char *str, t_stack **stack)
 		write(1, "\n", 1);
 	}
 }
-/*
-void	rrb(char draw, t_stack **stack_b)
-{
-	t_stack	*aux;
-	t_stack	*aux2;
-
-	if (!*stack_b || !(*stack_b)->next)
-		return ;
-	aux = *stack_b;
-	while ((*stack_b)->next)
-	{
-		*stack_b = (*stack_b)->next;
-		if ((*stack_b)->next && !(*stack_b)->next->next)
-			aux2 = *stack_b;
-	}
-	(*stack_b)->next = aux;
-	aux2->next = NULL;
-	if (draw)
-		write (1, "rrb\n", 4);
-}*/
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {

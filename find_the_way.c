@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-void		find_down(t_stack *stack_a, t_stack *stack_b, t_params **params);
-void		find_backwards(t_stack *stack_a, t_stack *stack_b, t_params **params);
-t_params	set_params(t_stack **pointers);
-t_params	compare_distances(int *distances, t_stack **pointers);
+static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params);
+static void	find_backwards(t_stack *stack_a, t_stack *stack_b, t_params **params);
+static t_params	set_params(t_stack **pointers);
+static t_params	compare_distances(int *distances, t_stack **pointers);
 
 void		find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
@@ -12,7 +12,7 @@ void		find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params)
 	find_backwards(stack_a->prev, stack_b, params);
 }
 
-void		find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
+static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
 	t_stack		*aux[2];
 	t_params	aux_param;
@@ -40,7 +40,7 @@ void		find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
 	stack_b->flag = 0;
 }
 
-void		find_backwards(t_stack *stack_a, t_stack *stack_b, t_params **params)
+static void	find_backwards(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
 	t_stack		*aux[2];
 	t_params	aux_param;
@@ -68,7 +68,7 @@ void		find_backwards(t_stack *stack_a, t_stack *stack_b, t_params **params)
 	stack_b->flag = 0;
 }
 
-t_params	set_params(t_stack **pointers)
+static t_params	set_params(t_stack **pointers)
 {
 	int	distances[4];
 
@@ -82,13 +82,10 @@ t_params	set_params(t_stack **pointers)
 		distances[1] = pointers[0]->reverse_stack_pos;
 	distances[2] = pointers[1]->stack_pos + pointers[0]->reverse_stack_pos;
 	distances[3] = pointers[1]->reverse_stack_pos + pointers[0]->stack_pos;
-	//for (int i = 0; i < 4; i++)
-		//printf("distances[%d] = %d\n", i, distances[i]);
-	//printf("\n");
 	return (compare_distances(distances, pointers));
 }
 
-t_params	compare_distances(int *distances, t_stack **pointers)
+static t_params	compare_distances(int *distances, t_stack **pointers)
 {
 	t_params	params;
 	int		min;

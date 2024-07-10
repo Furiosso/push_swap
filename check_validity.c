@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	check_integers(char **str);
 static void	stablish_position(t_stack *stack);

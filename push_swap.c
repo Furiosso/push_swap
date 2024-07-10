@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 int	main(int len, const char **argv)
 {
@@ -16,7 +15,7 @@ int	main(int len, const char **argv)
 	aux = stack_a;
 	while (size--)
 	{
-		printf(" %d: %d\n", aux->position, aux->number);
+		ft_printf(" %d: %d\n", aux->position, aux->number);
 		aux = aux->next;
 	}*/
 	clean(stack_a);

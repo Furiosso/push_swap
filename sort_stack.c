@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
-void	sort_stack(t_stack **stack_a);
-void	my_sort(t_stack **stack_a, t_stack **stack_b, int *size);
-void	sort_max(t_stack **stack_a, t_stack **stack_b, int size);
-void	choose_path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size);
-void	move_to_a(t_stack **stack_a, t_stack **stack_b);
+void		sort_stack(t_stack **stack_a);
+static void	my_sort(t_stack **stack_a, t_stack **stack_b, int *size);
+static void	sort_max(t_stack **stack_a, t_stack **stack_b, int size);
+static void	choose_path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size);
+static void	move_to_a(t_stack **stack_a, t_stack **stack_b);
 
 void	sort_stack(t_stack **stack_a)
 {
@@ -20,8 +20,8 @@ void	sort_stack(t_stack **stack_a)
 	if (size[0] == 3)
 		sort_3(stack_a);
 	if (size[0] > 3 && size[0] < 6)
-		sort_5(stack_a, &stack_b);
-	if (size[0] > 3)
+		sort_5(stack_a, &stack_b, size[0]);
+	if (size[0] > 5)
 		my_sort(stack_a, &stack_b, size);
 }
 
@@ -53,7 +53,7 @@ void	my_sort(t_stack **stack_a, t_stack **stack_b, int *size)
 	free(params);
 }
 
-void	move_to_a(t_stack **stack_a, t_stack **stack_b)
+static void	move_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	while (*stack_b || (*stack_a)->position != 1)
 	{
@@ -64,7 +64,7 @@ void	move_to_a(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void	sort_max(t_stack **stack_a, t_stack **stack_b, int size)
+static void	sort_max(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int	max;
 	t_stack	*aux;
@@ -87,7 +87,7 @@ void	sort_max(t_stack **stack_a, t_stack **stack_b, int size)
 	choose_path(stack_a, stack_b, aux, size);
 }
 
-void	choose_path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size)
+static void	choose_path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size)
 {
 	char	flag;
 
@@ -110,6 +110,6 @@ void	choose_path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size)
 				reverse_rotate("rrb", stack_b);
 		}
 	}
-	if ((*stack_a)->prev->position == 100 && !flag)
+	if ((*stack_a)->prev->position == size && !flag)
 		reverse_rotate("rra", stack_a);
 }
