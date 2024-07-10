@@ -28,7 +28,6 @@ typedef	struct	s_parameters
 t_stack	*check_validity(int len, const char **argv);
 void	sort_stack(t_stack **stack_a);
 char	**create_str(int len, const char **argv);
-char	look_down(t_stack *stack, int needle);
 t_stack	*create_list(char **str);
 int	list_size(t_stack *stack);
 t_stack	*last_node(t_stack *stack);
