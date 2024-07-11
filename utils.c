@@ -78,3 +78,21 @@ static t_stack *find_min(t_stack *stack)
         stack->flag = 0;
         return (aux[1]);
 }
+
+char	is_sorted(t_stack *stack, char check_from_the_beginning)
+{
+	t_stack	*aux;
+	int	pos;
+
+	if (check_from_the_beginning && stack->position != 1)
+		return (0);
+	pos = stack->position;
+	aux = stack;
+	while (aux->next->position != pos)
+	{
+		if (stack->position + 1 != stack->next->position)
+			return (0);
+		aux = aux->next;
+	}
+	return (1);
+}

@@ -32,6 +32,7 @@ t_stack	*create_list(char **str);
 int	list_size(t_stack *stack);
 t_stack	*last_node(t_stack *stack);
 char	check_order(t_stack **stack_a, t_stack **stack_b, int *size);
+char	is_sorted(t_stack *stack, char check_from_the_beginning);
 void	find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params);
 void	set_stack_pos(t_stack *stack_a, t_stack *stack_b, int *size);
 void	set_targets(t_stack *stack_a, t_stack *stack_b);

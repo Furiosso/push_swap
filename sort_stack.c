@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <stdio.h>
 
 void		sort_stack(t_stack **stack_a);
 static void	my_sort(t_stack **stack_a, t_stack **stack_b, int *size);
@@ -110,6 +111,6 @@ static void	choose_path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int 
 				reverse_rotate("rrb", stack_b);
 		}
 	}
-	if ((*stack_a)->prev->position == size && !flag)
+	if ((*stack_a)->prev->position == size && !flag && !is_sorted(*stack_a, 0))
 		reverse_rotate("rra", stack_a);
 }
