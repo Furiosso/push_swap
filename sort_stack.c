@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 void		sort_stack(t_stack **stack_a);
 static void	my_sort(t_stack **stack_a, t_stack **stack_b, int *size);
