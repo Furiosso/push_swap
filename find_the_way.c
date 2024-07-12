@@ -9,7 +9,8 @@ void		find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
 	(*params)->distance = INT_MAX;
 	find_down(stack_a, stack_b, params);
-	find_backwards(stack_a->prev, stack_b, params);
+	if ((*params)->distance > 1)
+		find_backwards(stack_a->prev, stack_b, params);
 }
 
 static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
