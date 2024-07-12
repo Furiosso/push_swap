@@ -31,5 +31,4 @@ int	main(int len, const char **argv)
 		aux = aux->next;
 	}*/
 	clean_stack(stack_a);
-	return (0);
 }
