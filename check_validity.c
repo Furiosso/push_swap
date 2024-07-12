@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_validity.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 19:38:22 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/07/12 14:51:37 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	check_integers(char **str);
@@ -18,7 +30,7 @@ t_stack	*check_validity(int len, const char **argv)
 	if (!str)
 		return (NULL);
 	check_integers(str);
-	stack_a = create_list(str);
+	stack_a = create_stack(str);
 	if (!stack_a)
 		return (NULL);
 	check_duplicity(stack_a);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 19:41:37 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/07/12 15:08:18 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	main(int len, const char **argv)
@@ -18,5 +30,6 @@ int	main(int len, const char **argv)
 		ft_printf(" %d: %d\n", aux->position, aux->number);
 		aux = aux->next;
 	}*/
-	clean(stack_a);
+	clean_stack(stack_a);
+	return (0);
 }

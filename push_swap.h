@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 19:42:30 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/07/12 14:52:41 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -28,7 +39,7 @@ typedef	struct	s_parameters
 t_stack	*check_validity(int len, const char **argv);
 void	sort_stack(t_stack **stack_a);
 char	**create_str(int len, const char **argv);
-t_stack	*create_list(char **str);
+t_stack	*create_stack(char **str);
 int	list_size(t_stack *stack);
 t_stack	*last_node(t_stack *stack);
 char	check_order(t_stack **stack_a, t_stack **stack_b, int *size);
@@ -36,8 +47,8 @@ char	is_sorted(t_stack *stack, char check_from_the_beginning);
 void	find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params);
 void	set_stack_pos(t_stack *stack_a, t_stack *stack_b, int *size);
 void	set_targets(t_stack *stack_a, t_stack *stack_b);
-void	execute_movements(t_stack **stack_a, t_stack **stack_b, t_params *params);
-void	clean(t_stack *list);
+void	execute_moves(t_stack **stack_a, t_stack **stack_b, t_params *params);
+void	clean_stack(t_stack *list);
 void	return_exit(char code);
 void	push_stack(char *str, t_stack **stack, t_stack **node);
 void	rotate(char *str, t_stack **stack);

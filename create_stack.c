@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_stack.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 19:39:53 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/07/12 14:53:57 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	ft_atol(char *str);
 static char	**clean_str(char **str);
-void		clean(t_stack *list);
+void		clean_stack(t_stack *list);
 
 char	**create_str(int len, const char **argv)
 {
@@ -23,7 +35,7 @@ char	**create_str(int len, const char **argv)
 	return (str);
 }
 
-t_stack	*create_list(char **str)
+t_stack	*create_stack(char **str)
 {
 	t_stack	*stack_a;
 	t_stack *aux;
@@ -40,7 +52,7 @@ t_stack	*create_list(char **str)
 		aux->next = ft_calloc(1, sizeof(t_stack));
 		if (!aux->next)
 		{
-			clean(stack_a);
+			clean_stack(stack_a);
 			return (NULL);
 		}
 		aux->next->prev = aux;
@@ -91,7 +103,7 @@ static char	**clean_str(char **str)
 	return (NULL);
 }
 
-void	clean(t_stack *list)
+void	clean_stack(t_stack *list)
 {
 	t_stack	*aux;
 

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 19:46:19 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/07/12 12:54:17 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void		sort_stack(t_stack **stack_a);
 static void	my_sort(t_stack **stack_a, t_stack **stack_b, int *size);
 static void	sort_max(t_stack **stack_a, t_stack **stack_b, int size);
-static void	choose_path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size);
+static void	path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size);
 static void	move_to_a(t_stack **stack_a, t_stack **stack_b);
 
 void	sort_stack(t_stack **stack_a)
@@ -42,7 +54,7 @@ void	my_sort(t_stack **stack_a, t_stack **stack_b, int *size)
 	{
 		set_targets(*stack_a, *stack_b);
 		find_the_way(*stack_a, *stack_b, &params);
-		execute_movements(stack_a, stack_b, params);
+		execute_moves(stack_a, stack_b, params);
 		size[0]--;
 		size[1]++;
 	}
@@ -73,7 +85,8 @@ static void	sort_max(t_stack **stack_a, t_stack **stack_b, int size)
 	max = INT_MIN;
 	pos = (*stack_b)->position;
 	aux = *stack_b;
-	while ((*stack_b)->position != pos || ((*stack_b)->position == pos && !(*stack_b)->flag))
+	while ((*stack_b)->position != pos
+		|| ((*stack_b)->position == pos && !(*stack_b)->flag))
 	{
 		if ((*stack_b)->position > max)
 		{
@@ -84,10 +97,10 @@ static void	sort_max(t_stack **stack_a, t_stack **stack_b, int size)
 		*stack_b = (*stack_b)->next;
 	}
 	(*stack_b)->flag = 0;
-	choose_path(stack_a, stack_b, aux, size);
+	path(stack_a, stack_b, aux, size);
 }
 
-static void	choose_path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size)
+static void	path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size)
 {
 	char	flag;
 

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/12 12:58:26 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/07/12 13:00:04 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static t_stack *find_min(t_stack *stack);
+static t_stack	*find_min(t_stack *stack);
 
 int     list_size(t_stack *stack)
 {
@@ -65,7 +77,8 @@ static t_stack *find_min(t_stack *stack)
         min = INT_MAX;
         aux[0] = stack;
         pos = stack->position;
-        while (aux[0]->position != pos || (aux[0]->position == pos && !stack->flag))
+        while (aux[0]->position != pos
+		|| (aux[0]->position == pos && !stack->flag))
         {
                 if (aux[0]->position < min)
                 {

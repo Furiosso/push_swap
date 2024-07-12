@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate_rules.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 19:45:31 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/07/12 12:48:06 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	rotate(char *str, t_stack **stack)
 {
-	if(!*stack || !(*stack)->next)
+	if (!*stack || !(*stack)->next)
 		return ;
 	*stack = (*stack)->next;
 	if (str)

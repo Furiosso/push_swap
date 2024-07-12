@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_the_way.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/12 12:38:24 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/07/12 13:06:01 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params);
-static void	find_backwards(t_stack *stack_a, t_stack *stack_b, t_params **params);
+static void	find_back(t_stack *stack_a, t_stack *stack_b, t_params **params);
 static t_params	set_params(t_stack **pointers);
 static t_params	compare_distances(int *distances, t_stack **pointers);
 
-void		find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params)
+void	find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
 	(*params)->distance = INT_MAX;
 	find_down(stack_a, stack_b, params);
 	if ((*params)->distance > 1)
-		find_backwards(stack_a->prev, stack_b, params);
+		find_back(stack_a->prev, stack_b, params);
 }
 
 static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
@@ -29,7 +41,7 @@ static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
 				aux_param = set_params(aux);
 				if (aux_param.distance < (*params)->distance)
 					**params = aux_param;
-				break;
+				break ;
 			}
 			aux[1] = aux[1]->next;
 			stack_a->flag = 1;
@@ -41,7 +53,7 @@ static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
 	stack_b->flag = 0;
 }
 
-static void	find_backwards(t_stack *stack_a, t_stack *stack_b, t_params **params)
+static void	find_back(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
 	t_stack		*aux[2];
 	t_params	aux_param;
@@ -57,7 +69,7 @@ static void	find_backwards(t_stack *stack_a, t_stack *stack_b, t_params **params
 				aux_param = set_params(aux);
 				if (aux_param.distance < (*params)->distance)
 					**params = aux_param;
-				break;
+				break ;
 			}
 			aux[1] = aux[1]->prev;
 			stack_a->flag = 1;
