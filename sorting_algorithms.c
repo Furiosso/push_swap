@@ -6,7 +6,7 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 12:55:11 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/12 12:55:24 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:18:32 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static char	look_down(t_stack *stack, int needle);
 void	sort_3(t_stack **stack)
 {
 	t_stack	*aux;
-	int	max;
-	int	i;
+	int		max;
+	int		i;
 
 	i = 3;
 	max = 0;
@@ -40,8 +40,8 @@ void	sort_3(t_stack **stack)
 void	sort_3_backwards(t_stack **stack)
 {
 	t_stack	*aux;
-	int	min;
-	int	i;
+	int		min;
+	int		i;
 
 	i = 3;
 	min = INT_MAX;
@@ -88,8 +88,8 @@ void	sort_5(t_stack **stack_a, t_stack **stack_b, int size)
 static char	look_down(t_stack *stack, int needle)
 {
 	t_stack	*aux;
-	int	len1;
-	int	len2;
+	int		len1;
+	int		len2;
 
 	aux = stack;
 	len1 = 0;

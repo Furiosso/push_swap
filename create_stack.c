@@ -6,7 +6,7 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:39:53 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/12 14:53:57 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/07/13 14:00:20 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		clean_stack(t_stack *list);
 char	**create_str(int len, const char **argv)
 {
 	char	**str;
-	int	i;
+	int		i;
 
 	str = ft_calloc(len, sizeof(char *));
 	if (!str)
@@ -38,8 +38,8 @@ char	**create_str(int len, const char **argv)
 t_stack	*create_stack(char **str)
 {
 	t_stack	*stack_a;
-	t_stack *aux;
-	int	cont;
+	t_stack	*aux;
+	int		cont;
 
 	stack_a = ft_calloc(1, sizeof(t_stack));
 	if (!stack_a)
@@ -66,7 +66,7 @@ t_stack	*create_stack(char **str)
 static int	ft_atol(char *str)
 {
 	long	num;
-	int	result;
+	int		result;
 	char	odd;
 
 	num = 0;
@@ -95,7 +95,7 @@ static int	ft_atol(char *str)
 static char	**clean_str(char **str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i])
 		free(str[i++]);
@@ -107,7 +107,7 @@ void	clean_stack(t_stack *list)
 {
 	t_stack	*aux;
 
-	list->prev->next = NULL;	
+	list->prev->next = NULL;
 	while (list)
 	{
 		aux = list->next;

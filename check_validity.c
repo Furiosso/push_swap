@@ -6,7 +6,7 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:38:22 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/12 14:51:37 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/07/13 18:09:06 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_stack	*check_validity(int len, const char **argv)
 	t_stack	*stack_a;
 	t_stack	*last;
 
+	if (!argv[1][0])
+		return_exit(14);
 	if (len == 2)
 		str = ft_split(argv[1], ' ');
 	else
@@ -54,16 +56,12 @@ static void	check_integers(char **str)
 		j = 0;
 		while (str[i][j])
 		{
-			if (str[i][j] < 48 || str[i][j] > 57)
-			{
-				if ((j == 0 && str[i][j] == 45)
-					|| (j == 0 && str[i][j] == 43))
-				{
-					j++;
-					continue ;
-				}
+			if (!ft_isdigit(str[i][j])
+				&& !(j == 0
+					&& (str[i][j] == 45 || str[i][j] == 43)
+					&& str[i][j + 1]
+					&& ft_isdigit(str[i][j + 1])))
 				return_exit(1);
-			}
 			j++;
 		}
 		i++;
@@ -72,10 +70,10 @@ static void	check_integers(char **str)
 
 static void	check_duplicity(t_stack *stack_a)
 {
+	int		i;
+	int		j;
 	t_stack	*aux1;
 	t_stack	*aux2;
-	int	i;
-	int	j;
 
 	aux1 = stack_a;
 	i = 0;
@@ -101,34 +99,34 @@ static void	check_duplicity(t_stack *stack_a)
 
 void	return_exit(char code)
 {
-	if (ft_printf("Error\n") < 0)
+	if (write(2, "Error\n", 6) < 0)
 		exit(6);
 	exit(code);
 }
 
 static void	stablish_position(t_stack *stack)
 {
-        int	pos;
-        t_stack	*aux1;
-        t_stack	*aux2;
+	int		pos;
+	t_stack	*aux1;
+	t_stack	*aux2;
 
-        aux1 = stack;
-        while (aux1)
-        {
-                pos = 1;
-                aux2 = stack;
-                while (aux2)
-                {
-                        if (aux1->number == aux2->number)
-                        {
-                                aux2 = aux2->next;
-                                continue ;
-                        }
-                        if (aux2->number < aux1->number)
-                                pos++;
-                        aux2 = aux2->next;
-                }
-                aux1->position = pos;
-                aux1 = aux1->next;
-        }
+	aux1 = stack;
+	while (aux1)
+	{
+		pos = 1;
+		aux2 = stack;
+		while (aux2)
+		{
+			if (aux1->number == aux2->number)
+			{
+				aux2 = aux2->next;
+				continue ;
+			}
+			if (aux2->number < aux1->number)
+				pos++;
+			aux2 = aux2->next;
+		}
+		aux1->position = pos;
+		aux1 = aux1->next;
+	}
 }

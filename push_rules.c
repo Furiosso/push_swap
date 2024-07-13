@@ -6,7 +6,7 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:40:56 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/12 12:46:43 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/07/13 14:37:19 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	insert_node(t_stack **stack, t_stack *node);
 void	push_stack(char *str, t_stack **stack, t_stack **node)
 {
 	t_stack	*aux;
-	int	size;
+	int		size;
 
 	if (!*node)
 		return ;
@@ -34,7 +34,7 @@ void	push_stack(char *str, t_stack **stack, t_stack **node)
 	}
 	if (!*stack)
 		first_node(stack, aux);
-	else 
+	else
 		insert_node(stack, aux);
 	if (ft_printf("%s\n", str) < 0)
 		exit(9);

@@ -6,26 +6,26 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 12:38:24 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/12 13:06:01 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:05:54 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params);
-static void	find_back(t_stack *stack_a, t_stack *stack_b, t_params **params);
+static void		fnd_down(t_stack *stack_a, t_stack *stack_b, t_params **params);
+static void		fnd_back(t_stack *stack_a, t_stack *stack_b, t_params **params);
 static t_params	set_params(t_stack **pointers);
 static t_params	compare_distances(int *distances, t_stack **pointers);
 
 void	find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
 	(*params)->distance = INT_MAX;
-	find_down(stack_a, stack_b, params);
+	fnd_down(stack_a, stack_b, params);
 	if ((*params)->distance > 1)
-		find_back(stack_a->prev, stack_b, params);
+		fnd_back(stack_a->prev, stack_b, params);
 }
 
-static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
+static void	fnd_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
 	t_stack		*aux[2];
 	t_params	aux_param;
@@ -53,7 +53,7 @@ static void	find_down(t_stack *stack_a, t_stack *stack_b, t_params **params)
 	stack_b->flag = 0;
 }
 
-static void	find_back(t_stack *stack_a, t_stack *stack_b, t_params **params)
+static void	fnd_back(t_stack *stack_a, t_stack *stack_b, t_params **params)
 {
 	t_stack		*aux[2];
 	t_params	aux_param;
@@ -101,9 +101,9 @@ static t_params	set_params(t_stack **pointers)
 static t_params	compare_distances(int *distances, t_stack **pointers)
 {
 	t_params	params;
-	int		min;
-	int		index;
-	int		i;
+	int			min;
+	int			index;
+	int			i;
 
 	min = INT_MAX;
 	index = 0;

@@ -6,7 +6,7 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:46:19 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/12 12:54:17 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:19:57 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	move_to_a(t_stack **stack_a, t_stack **stack_b);
 void	sort_stack(t_stack **stack_a)
 {
 	t_stack	*stack_b;
-	int	size[3];
+	int		size[3];
 
 	stack_b = NULL;
 	size[0] = list_size(*stack_a);
@@ -43,7 +43,7 @@ void	my_sort(t_stack **stack_a, t_stack **stack_b, int *size)
 
 	params = ft_calloc(sizeof(t_params), 1);
 	if (!params)
-		exit(5) ;
+		exit(5);
 	push_stack("pb", stack_b, stack_a);
 	push_stack("pb", stack_b, stack_a);
 	push_stack("pb", stack_b, stack_a);
@@ -78,9 +78,9 @@ static void	move_to_a(t_stack **stack_a, t_stack **stack_b)
 
 static void	sort_max(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	int	max;
+	int		max;
 	t_stack	*aux;
-	int	pos;
+	int		pos;
 
 	max = INT_MIN;
 	pos = (*stack_b)->position;
