@@ -103,7 +103,7 @@ char	is_sorted(t_stack *stack, char check_from_the_beginning)
 	aux = stack;
 	while (aux->next->position != pos)
 	{
-		if (stack->position + 1 != stack->next->position)
+		if (aux->position + 1 != aux->next->position)
 			return (0);
 		aux = aux->next;
 	}

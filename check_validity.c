@@ -101,8 +101,8 @@ static void	check_duplicity(t_stack *stack_a)
 
 void	return_exit(char code)
 {
-	//ft_printf("Error\n");
-	write(1, "Error\n", 6);
+	if (ft_printf("Error\n") < 0)
+		exit(6);
 	exit(code);
 }
 

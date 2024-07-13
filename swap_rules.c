@@ -27,9 +27,8 @@ void	swap(char *str, t_stack **stack)
 		(*stack)->next->number = num;
 		if (str)
 		{
-			//ft_printf("%s\n", str);
-			write(1, str, 2);
-			write(1, "\n", 1);
+			if (ft_printf("%s\n", str) < 0)
+				exit(7);
 		}
 	}
 }
@@ -38,6 +37,6 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(NULL, stack_a);
 	swap(NULL, stack_b);
-	//ft_printf("ss\n");
-	write(1, "ss\n", 3);
+	if (ft_printf("ss\n") < 0)
+		exit(8);
 }

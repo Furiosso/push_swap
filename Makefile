@@ -29,10 +29,10 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME):$(OFILES) $(LIBFT)
-	@$(CC) $(CFLAGS) -I$(LIBFT_DIR) $(OFILES) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) -I $(LIBFT_DIR) $(OFILES) $(LIBFT) -o $(NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -I$(LIBFT_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(LIBFT_DIR) -c $< -o $@
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
