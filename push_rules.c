@@ -36,8 +36,11 @@ void	push_stack(char *str, t_stack **stack, t_stack **node)
 		first_node(stack, aux);
 	else
 		insert_node(stack, aux);
-	if (ft_printf("%s\n", str) < 0)
-		exit(9);
+	if (str)
+	{
+		if (ft_printf("%s\n", str) < 0)
+			exit(9);
+	}
 }
 
 static void	first_node(t_stack **stack, t_stack *node)

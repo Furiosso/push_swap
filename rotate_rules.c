@@ -24,10 +24,13 @@ void	rotate(char *str, t_stack **stack)
 	}
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b, char is_to_be_printed)
 {
 	rotate(NULL, stack_a);
 	rotate(NULL, stack_b);
-	if (ft_printf("rr\n") < 0)
-		exit(11);
+	if (is_to_be_printed)
+	{
+		if (ft_printf("rr\n") < 0)
+			exit(11);
+	}
 }

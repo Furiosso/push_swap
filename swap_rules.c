@@ -33,10 +33,13 @@ void	swap(char *str, t_stack **stack)
 	}
 }
 
-void	ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, char is_to_be_printed)
 {
 	swap(NULL, stack_a);
 	swap(NULL, stack_b);
-	if (ft_printf("ss\n") < 0)
-		exit(8);
+	if (is_to_be_printed)
+	{
+		if (ft_printf("ss\n") < 0)
+			exit(8);
+	}
 }

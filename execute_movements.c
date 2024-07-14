@@ -37,7 +37,7 @@ static void	move_up(t_stack **stack_a, t_stack **stack_b, t_params *params)
 	{
 		if ((*stack_a)->position != params->pos
 			&& (*stack_b)->position != params->target)
-			rr(stack_a, stack_b);
+			rr(stack_a, stack_b, 1);
 		if ((*stack_a)->position != params->pos
 			&& (*stack_b)->position == params->target)
 			rotate("ra", stack_a);
@@ -54,7 +54,7 @@ static void	move_down(t_stack **stack_a, t_stack **stack_b, t_params *params)
 	{
 		if ((*stack_a)->position != params->pos
 			&& (*stack_b)->position != params->target)
-			rrr(stack_a, stack_b);
+			rrr(stack_a, stack_b, 1);
 		if ((*stack_a)->position != params->pos
 			&& (*stack_b)->position == params->target)
 			reverse_rotate("rra", stack_a);

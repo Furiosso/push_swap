@@ -24,10 +24,13 @@ void	reverse_rotate(char *str, t_stack **stack)
 	}
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b, char is_to_be_printed)
 {
 	reverse_rotate(NULL, stack_a);
 	reverse_rotate(NULL, stack_b);
-	if (ft_printf("rrr\n") < 0)
-		exit(13);
+	if (is_to_be_printed)
+	{
+		if (ft_printf("rrr\n") < 0)
+			exit(13);
+	}
 }

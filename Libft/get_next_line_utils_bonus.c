@@ -89,23 +89,6 @@ void	record_first_line(t_buffer **list)
 		(*list)->line[i++] = 0;
 }
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-	size_t	i;
-
-	if (((double) count > (double)((size_t) 0xffffffffffffffff) / size) ||
-			(((double) size > (double)((size_t) 0xffffffffffffffff) / count)))
-		return (NULL);
-	i = 0;
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	while (i < count * size)
-		*((unsigned char *)ptr + i++) = 0;
-	return ((void *)ptr);
-}
-
 char	*clean_bonus(t_index **index, int fd)
 {
 	t_index		*temp;

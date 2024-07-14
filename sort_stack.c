@@ -116,7 +116,7 @@ static void	path(t_stack **stack_a, t_stack **stack_b, t_stack *max, int size)
 		{
 			if ((*stack_a)->prev->position == size && (*stack_b)->prev == max)
 			{
-				rrr(stack_a, stack_b);
+				rrr(stack_a, stack_b, 1);
 				flag = 1;
 			}
 			else
