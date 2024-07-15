@@ -31,6 +31,7 @@ static void check_list(t_stack **stack_a, t_stack **stack_b)
 		{
 			check_line(line);
 			execute_line(stack_a, stack_b, line);
+			free(line);
 		}
 		while (line)
 		{
@@ -39,6 +40,7 @@ static void check_list(t_stack **stack_a, t_stack **stack_b)
 				{
 					check_line(line);
 					execute_line(stack_a, stack_b, line);
+					free(line);
 				}
 		}
 		if (is_sorted(*stack_a, 1) && !*stack_b)
@@ -49,17 +51,17 @@ static void check_list(t_stack **stack_a, t_stack **stack_b)
 
 static void	check_line(char *line)
 {
-		if (ft_strncmp(line, "ra\n", 3) != 0
-			&& ft_strncmp(line, "rb\n", 3) != 0
-			&& ft_strncmp(line, "rr\n", 3) != 0
-			&& ft_strncmp(line, "rra\n", 4) != 0
-			&& ft_strncmp(line, "rrb\n", 4) != 0
-			&& ft_strncmp(line, "rrr\n", 4) != 0
-			&& ft_strncmp(line, "pa\n", 3) != 0
-			&& ft_strncmp(line, "pb\n", 3) != 0
-			&& ft_strncmp(line, "sa\n", 3) != 0
-			&& ft_strncmp(line, "sb\n", 3) != 0
-			&& ft_strncmp(line, "ss\n", 3) != 0)
+		if (ft_strncmp(line, "ra\n\0", 4)
+			&& ft_strncmp(line, "rb\n\0", 4)
+			&& ft_strncmp(line, "rr\n\0", 4)
+			&& ft_strncmp(line, "rra\n\0", 5)
+			&& ft_strncmp(line, "rrb\n\0", 5)
+			&& ft_strncmp(line, "rrr\n\0", 5)
+			&& ft_strncmp(line, "pa\n\0", 4)
+			&& ft_strncmp(line, "pb\n\0", 4)
+			&& ft_strncmp(line, "sa\n\0", 4)
+			&& ft_strncmp(line, "sb\n\0", 4)
+			&& ft_strncmp(line, "ss\n\0", 4))
 				return_exit(17);
 }
 
