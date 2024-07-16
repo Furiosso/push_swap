@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+static int	split_arg(char **str, const char **argv, int *con);
 static int	ft_atol(char *str);
 static char	**clean_str(char **str);
 void		clean_stack(t_stack *list);
@@ -19,20 +20,48 @@ void		clean_stack(t_stack *list);
 char	**create_str(int len, const char **argv)
 {
 	char	**str;
-	int		i;
+	int		con[2];
 
 	str = ft_calloc(len, sizeof(char *));
 	if (!str)
 		return (NULL);
-	i = 1;
-	while (argv[i])
+	con[0] = 0;
+	con[1] = 0;
+	while (argv[++con[0]])
 	{
-		str[i - 1] = ft_strdup(argv[i]);
-		if (!str[i - 1])
+		if (ft_strchr(argv[con[0]], ' '))
+		{
+			con[1] = split_arg(str, argv, con);
+			if (con[1] < 0)
+				return (clean_str(str));
+			continue ;
+		}
+		str[con[1]] = ft_strdup(argv[con[0]]);
+		if (!str[con[1]++])
 			return (clean_str(str));
-		i++;
 	}
 	return (str);
+}
+
+static int	split_arg(char **str, const char **argv, int *con)
+{
+	char	**aux;
+	int		i;
+	int		j;
+
+	aux = ft_split(argv[con[0]], ' ');
+	if (!aux)
+		return (-1);
+	i = con[1];
+	j = 0;
+	while (aux[j])
+	{
+		str[i] = ft_strdup(aux[j++]);
+		if (!str[i++])
+			return (-1);
+	}
+	clean_str(aux);
+	return (i);
 }
 
 t_stack	*create_stack(char **str)
@@ -96,22 +125,12 @@ static char	**clean_str(char **str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
-	return (NULL);
-}
-
-void	clean_stack(t_stack *list)
-{
-	t_stack	*aux;
-
-	list->prev->next = NULL;
-	while (list)
+	if (str)
 	{
-		aux = list->next;
-		free(list);
-		list = aux;
+		i = 0;
+		while (str[i])
+			free(str[i++]);
+		free(str);
 	}
+	return (NULL);
 }

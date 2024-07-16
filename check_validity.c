@@ -23,12 +23,8 @@ t_stack	*check_validity(int len, const char **argv)
 	t_stack	*stack_a;
 	t_stack	*last;
 
-	if (!argv[1][0])
-		return_exit(14);
-	if (len == 2)
-		str = ft_split(argv[1], ' ');
-	else
-		str = create_str(len, argv);
+	len = count_strings(len, argv);
+	str = create_str(len, argv);
 	if (!str)
 		return (NULL);
 	check_integers(str);

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-COMMON_FILES = check_validity.c create_stack.c push_rules.c swap_rules.c rotate_rules.c reverse_rotate_rules.c set_params.c utils.c
+COMMON_FILES = check_validity.c create_stack.c push_rules.c swap_rules.c rotate_rules.c reverse_rotate_rules.c set_params.c utils.c validity_utils.c
 
 CFILES = push_swap.c sort_stack.c execute_movements.c sorting_algorithms.c find_the_way.c
 

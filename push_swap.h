@@ -37,6 +37,7 @@ typedef struct s_parameters
 }		t_params;
 
 t_stack	*check_validity(int len, const char **argv);
+int		count_strings(int len, const char **argv);
 void	sort_stack(t_stack **stack_a);
 char	**create_str(int len, const char **argv);
 t_stack	*create_stack(char **str);
