@@ -60,31 +60,6 @@ void	sort_3_backwards(t_stack **stack)
 		swap("sb", stack);
 }
 
-void	sort_5(t_stack **stack_a, t_stack **stack_b, int size)
-{
-	int	min;
-
-	min = 1;
-	while (size-- > 3)
-	{
-		if (look_down(*stack_a, min))
-		{
-			while ((*stack_a)->position != min)
-				rotate("ra", stack_a);
-		}
-		else
-		{
-			while ((*stack_a)->position != min)
-				reverse_rotate("rra", stack_a);
-		}
-		push_stack("pb", stack_b, stack_a);
-		min++;
-	}
-	sort_3(stack_a);
-	while (*stack_b)
-		push_stack("pa", stack_a, stack_b);
-}
-
 static char	look_down(t_stack *stack, int needle)
 {
 	t_stack	*aux;

@@ -31,9 +31,7 @@ void	sort_stack(t_stack **stack_a)
 		return ;
 	if (size[0] == 3)
 		sort_3(stack_a);
-	if (size[0] > 3 && size[0] < 6)
-		sort_5(stack_a, &stack_b, size[0]);
-	if (size[0] > 5)
+	if (size[0] > 3)
 		my_sort(stack_a, &stack_b, size);
 }
 
