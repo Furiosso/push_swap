@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-static char	look_down(t_stack *stack, int needle);
-
 void	sort_3(t_stack **stack)
 {
 	t_stack	*aux;
@@ -58,29 +56,4 @@ void	sort_3_backwards(t_stack **stack)
 		reverse_rotate("rrb", stack);
 	if ((*stack)->position < (*stack)->next->position)
 		swap("sb", stack);
-}
-
-static char	look_down(t_stack *stack, int needle)
-{
-	t_stack	*aux;
-	int		len1;
-	int		len2;
-
-	aux = stack;
-	len1 = 0;
-	len2 = 0;
-	while (aux->position != needle)
-	{
-		aux = aux->next;
-		len1++;
-	}
-	aux = stack;
-	while (aux->position != needle)
-	{
-		aux = aux->prev;
-		len2++;
-	}
-	if (len2 < len1)
-		return (0);
-	return (1);
 }
