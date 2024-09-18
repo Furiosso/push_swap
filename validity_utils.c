@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validity_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/17 12:10:51 by dagimeno          #+#    #+#             */
+/*   Updated: 2024/09/18 11:52:47 by dagimeno         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	check_spaces(const char **argv, int con);
@@ -54,4 +66,20 @@ void	clean_stack(t_stack *list)
 		free(list);
 		list = aux;
 	}
+}
+
+long	get_num(char *str, size_t len)
+{
+	long	num;
+
+	num = 0;
+	while (*str > 47 && *str < 58)
+	{
+		num = num * 10 + *str - 48;
+		str++;
+		len++;
+	}
+	if (len > 11)
+		return_exit(10);
+	return (num);
 }

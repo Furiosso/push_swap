@@ -6,7 +6,7 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:39:53 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/13 14:00:20 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:52:50 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,24 +96,24 @@ static int	ft_atol(char *str)
 {
 	long	num;
 	int		result;
-	char	odd;
+	char	negative;
+	size_t	len;
 
-	num = 0;
-	odd = 0;
 	while (*str == 32 || (*str > 8 && *str < 14))
 		str++;
+	negative = 0;
+	len = 0;
 	if (*str == 45 || *str == 43)
 	{
 		if (*str == 45)
-			odd = 1;
+		{
+			negative = 1;
+			len++;
+		}
 		str++;
 	}
-	while (*str > 47 && *str < 58)
-	{
-		num = num * 10 + *str - 48;
-		str++;
-	}
-	if (odd)
+	num = get_num(str, len);
+	if (negative)
 		num = -num;
 	if (num > INT_MAX || num < INT_MIN)
 		return_exit(2);

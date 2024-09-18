@@ -6,7 +6,7 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:42:30 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/13 14:59:39 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:40:06 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_stack	*last_node(t_stack *stack);
 char	check_order(t_stack **stack_a, t_stack **stack_b, int *size);
 char	is_sorted(t_stack *stack, char check_from_the_beginning);
 void	find_the_way(t_stack *stack_a, t_stack *stack_b, t_params **params);
+long	get_num(char *str, size_t len);
 void	set_stack_pos(t_stack *stack_a, t_stack *stack_b, int *size);
 void	set_targets(t_stack *stack_a, t_stack *stack_b);
 void	execute_moves(t_stack **stack_a, t_stack **stack_b, t_params *params);
