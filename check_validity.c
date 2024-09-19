@@ -6,7 +6,7 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:38:22 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/07/13 18:09:06 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:57:09 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,30 +66,20 @@ static void	check_integers(char **str)
 
 static void	check_duplicity(t_stack *stack_a)
 {
-	int		i;
-	int		j;
 	t_stack	*aux1;
 	t_stack	*aux2;
 
 	aux1 = stack_a;
-	i = 0;
 	while (aux1)
 	{
-		aux2 = stack_a;
-		j = 0;
+		aux2 = aux1->next;
 		while (aux2)
 		{
-			if (i == j++)
-			{
-				aux2 = aux2->next;
-				continue ;
-			}
 			if (aux1->number == aux2->number)
 				return_exit(3);
 			aux2 = aux2->next;
 		}
 		aux1 = aux1->next;
-		i++;
 	}
 }
 
