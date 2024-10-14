@@ -6,16 +6,14 @@
 /*   By: dagimeno <dagimeno@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 19:39:53 by dagimeno          #+#    #+#             */
-/*   Updated: 2024/09/18 11:52:50 by dagimeno         ###   ########.fr       */
+/*   Updated: 2024/10/14 20:59:16 by dagimeno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	split_arg(char **str, const char **argv, int *con);
 static int	ft_atol(char *str, char **list, t_stack *stack);
-//char		**clean_str(char **str);
 
 char	**create_str(int len, const char **argv)
 {
