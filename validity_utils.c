@@ -59,7 +59,8 @@ void	clean_stack(t_stack *list)
 {
 	t_stack	*aux;
 
-	list->prev->next = NULL;
+	if (list->prev)
+		list->prev->next = NULL;
 	while (list)
 	{
 		aux = list->next;
@@ -68,7 +69,7 @@ void	clean_stack(t_stack *list)
 	}
 }
 
-long	get_num(char *str, size_t len)
+long	get_num(char *str, size_t len, char **list, t_stack *stack)
 {
 	long	num;
 
@@ -80,6 +81,13 @@ long	get_num(char *str, size_t len)
 		len++;
 	}
 	if (len > 11)
-		return_exit(10);
+		free_and_exit(list, stack);
 	return (num);
+}
+
+void	free_and_exit(char **str, t_stack *stack)
+{
+	clean_str(str);
+	clean_stack(stack);
+	return_exit(2);
 }

@@ -30,7 +30,10 @@ t_stack	*check_validity(int len, const char **argv)
 	check_integers(str);
 	stack_a = create_stack(str);
 	if (!stack_a)
+	{
+		clean_str(str);
 		return (NULL);
+	}
 	check_duplicity(stack_a);
 	stablish_position(stack_a);
 	last = last_node(stack_a);
@@ -44,23 +47,27 @@ static void	check_integers(char **str)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (str[i])
+	i = -1;
+	while (str[++i])
 	{
 		if (!ft_strlen(str[i]))
+		{
+			clean_str(str);
 			return_exit(4);
-		j = 0;
-		while (str[i][j])
+		}
+		j = -1;
+		while (str[i][++j])
 		{
 			if (!ft_isdigit(str[i][j])
 				&& !(j == 0
 					&& (str[i][j] == 45 || str[i][j] == 43)
 					&& str[i][j + 1]
 					&& ft_isdigit(str[i][j + 1])))
-				return_exit(1);
-			j++;
+			{
+				clean_str(str);
+				return_exit(3);
+			}
 		}
-		i++;
 	}
 }
 
@@ -76,7 +83,10 @@ static void	check_duplicity(t_stack *stack_a)
 		while (aux2)
 		{
 			if (aux1->number == aux2->number)
-				return_exit(3);
+			{
+				clean_stack(stack_a);
+				return_exit(4);
+			}
 			aux2 = aux2->next;
 		}
 		aux1 = aux1->next;

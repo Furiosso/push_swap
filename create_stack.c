@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static int	split_arg(char **str, const char **argv, int *con);
-static int	ft_atol(char *str);
-static char	**clean_str(char **str);
-void		clean_stack(t_stack *list);
+static int	ft_atol(char *str, char **list, t_stack *stack);
+//char		**clean_str(char **str);
 
 char	**create_str(int len, const char **argv)
 {
@@ -73,7 +73,7 @@ t_stack	*create_stack(char **str)
 	stack_a = ft_calloc(1, sizeof(t_stack));
 	if (!stack_a)
 		return (NULL);
-	stack_a->number = ft_atol(str[0]);
+	stack_a->number = ft_atol(str[0], str, stack_a);
 	aux = stack_a;
 	cont = 1;
 	while (str[cont])
@@ -86,13 +86,13 @@ t_stack	*create_stack(char **str)
 		}
 		aux->next->prev = aux;
 		aux = aux->next;
-		aux->number = ft_atol(str[cont++]);
+		aux->number = ft_atol(str[cont++], str, stack_a);
 	}
 	clean_str(str);
 	return (stack_a);
 }
 
-static int	ft_atol(char *str)
+static int	ft_atol(char *str, char **list, t_stack *stack)
 {
 	long	num;
 	int		result;
@@ -112,16 +112,16 @@ static int	ft_atol(char *str)
 		}
 		str++;
 	}
-	num = get_num(str, len);
+	num = get_num(str, len, list, stack);
 	if (negative)
 		num = -num;
 	if (num > INT_MAX || num < INT_MIN)
-		return_exit(2);
+		free_and_exit(list, stack);
 	result = num;
 	return (result);
 }
 
-static char	**clean_str(char **str)
+char	**clean_str(char **str)
 {
 	int	i;
 
